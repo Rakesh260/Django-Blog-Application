@@ -1,0 +1,28 @@
+<mat-toolbar>
+    <span style="text-align: center;">Add new blog</span>
+</mat-toolbar>
+<form [formGroup]="createBlogForm" (ngSubmit)="onSubmit()" class="example-form">
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Title</mat-label>
+        <input formControlName="title" matInput type="text" placeholder="Add your title">
+        <mat-error *ngIf="createBlogForm.get('title')?.hasError('required')">
+            title is required
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Content</mat-label>
+        <textarea formControlName="content"  matInput type="text" placeholder="Start typing ....."></textarea>
+
+        <mat-error *ngIf="createBlogForm.get('content')?.hasError('required')">
+            content is required
+        </mat-error>
+    </mat-form-field>
+    <div style="display: flex;justify-content: center;">
+        <button mat-raised-button color="primary" type="submit" [disabled]="!createBlogForm.valid">Submit</button>
+    </div>
+
+    <p style="color: red;">{{errorMsg}}</p>
+  
+
+  </form>

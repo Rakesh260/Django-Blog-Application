@@ -7,11 +7,14 @@ class Post(models.Model):
     content = models.TextField()
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     published_date = models.DateTimeField(auto_now_add=True)
-    liked_by = models.ManyToManyField(User, related_name='liked_posts')
+    liked_by = models.ManyToManyField(User, related_name='liked_posts', null=True)
 
     class Meta:
         db_table = 'post'
         managed = True
+
+    def is_liked_by_user(self, user):
+        return self.liked_by.filter(id=user.id).exists()
 
 
 class Comment(models.Model):

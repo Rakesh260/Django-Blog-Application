@@ -1,0 +1,85 @@
+
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="example-form" *ngIf="login">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <input formControlName="userName" matInput type="text" placeholder="Username">
+        <mat-error *ngIf="loginForm.get('userName')?.hasError('required')">
+          Username is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input formControlName="password" matInput type="password" placeholder="Password">
+        <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+    </mat-card-content>
+
+    <p style="color:red">{{errorMsg}}</p>
+    <p style="color:green">{{message}}</p>
+
+    <p> Don't have an account? <a (click)="changeLoginValue()">Register</a></p>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">Login</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="example-form" *ngIf="!login">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <mat-form-field class="example-full-width">
+        <input formControlName="firstName" matInput type="text" placeholder="First Name">
+        <mat-error *ngIf="registerForm.get('firstName')?.hasError('required')">
+          First Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input formControlName="lastName" matInput type="text" placeholder="Last Name">
+  
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input formControlName="userName" matInput type="text" placeholder="Username">
+        <mat-error *ngIf="registerForm.get('userName')?.hasError('required')">
+          Username is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input formControlName="email" matInput type="text" placeholder="Email">
+        <mat-error *ngIf="registerForm.get('email')?.hasError('required')">
+          Email is required
+        </mat-error>
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <input formControlName="password" matInput type="password" placeholder="Password">
+        <mat-error *ngIf="registerForm.get('password')?.hasError('required')">
+          Password is required
+        </mat-error>
+      </mat-form-field>
+
+    </mat-card-content>
+
+    <p style="color:red">{{errorMsg}}</p>
+
+    <p> Already have an account? <a (click)="changeLoginValue()">Login</a></p>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="!registerForm.valid">Register</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

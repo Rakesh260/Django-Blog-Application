@@ -26,8 +26,6 @@ SECRET_KEY = 'qdg7jpb0#9kq47jgh)9-@d6+tpm$_sk$4d98ozge=7bzr!a-pq'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -45,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # 'django_blog.middleware.AuthenticationMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -80,19 +79,46 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=15),  # Adjust expiry time as needed
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=150),  # Adjust expiry time as needed
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
     'ROTATE_REFRESH_TOKENS': True,
 }
 
 WSGI_APPLICATION = 'django_blog.wsgi.application'
 
-CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8004']
+CSRF_TRUSTED_ORIGINS = ['http://127.0.0.1:8004',  'http://localhost:4200','http://127.0.0.1:4200']
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ORIGIN_WHITELIST = [
-    'http://127.0.0.1:8004'
+    'http://127.0.0.1:8004', 'http://localhost:4200',  'http://localhost:4200'
 ]
+CORS_ALLOWED_ORIGINS = [
+  'http://localhost:4200'
+]
+
+ALLOWED_HOSTS = [ 'http://localhost:4200','http://127.0.0.1:4200', '*']
+
+# Access-Control-Allow-Origin = 'https://your-client-domain.com'
+# Access-Control-Allow-Credentials: true
+
+
+# CORS_ALLOW_HEADERS = (
+#     'accept',
+#     'accept-encoding',
+#     'authorization',
+#     'content-type',
+#     'dnt',
+#     'origin',
+#     'user-agent',
+#     'x-csrftoken',
+#     'x-requested-with',
+#     'Access-Control-Allow-Origin',
+#     '_auth_user_id',
+#     'csrftoken',
+#     'set-cookie',
+#     'cookies',
+#     'cookie'
+# )
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases

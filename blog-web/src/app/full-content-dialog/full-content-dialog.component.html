@@ -1,0 +1,29 @@
+
+<div >
+  <div  style="text-align: center;">
+    <h1 mat-dialog-title>{{ blogPastData.title }}</h1>
+    <h5 mat-dialog-title>{{ blogPastData.published_date }}</h5>
+  </div>
+  <div mat-dialog-content>
+    <p>{{ blogPastData.content }}</p>
+  </div>
+  <div>
+    <h1> Comments</h1>
+  </div>
+  <div mat-dialog-actions style="display: flex; justify-content: center;">
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</div>
+
+<!-- <h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>
+  <p>{{ data.published_date }}</p>
+  <div [innerHTML]="data.content"></div>
+</div>
+<div mat-dialog-actions>
+  <button mat-button >Close</button>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</div> -->

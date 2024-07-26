@@ -1,0 +1,40 @@
+
+<mat-toolbar>
+    <span class="toolbar-title">Blogs</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-flat-button class="toolbar-button" (click)="addNewBlog()">Add Blog</button>
+    <button mat-flat-button class="toolbar-button">Logout</button>
+  </mat-toolbar>
+
+<section>
+    <mat-grid-list class="example-card" cols="3" rowHeight="3:2" >
+        <mat-grid-tile  *ngFor="let element of data">
+            <mat-card class="example-card" appearance="outlined">
+                <mat-card-header>
+                <div mat-card-avatar class="example-header-image"></div>
+                <mat-card-title>{{element.title}}</mat-card-title>
+                <mat-card-subtitle>{{element.author}}</mat-card-subtitle>
+                </mat-card-header>
+                <mat-card-content>
+
+                <p>
+                    {{element.content | slice:0:50}}... 
+                    <a href="javascript:void(0)" (click)="openDialog(element)">View Blog</a>
+                </p>
+                </mat-card-content>
+                <mat-card-actions>
+                <button mat-button >LIKE</button>
+    
+                </mat-card-actions>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+
+      <mat-paginator [length]='totalLength'
+              [pageSize]="pageLength"
+              [pageSizeOptions]="[3,6,9]"
+              (page)="loadProducts($event.pageIndex, $event.pageSize)"
+              aria-label="Select page">
+        </mat-paginator>
+      
+</section>
