@@ -51,3 +51,23 @@ python manage.py migrate
 Start the development server:
 python manage.py runserver
 
+Frontend Installation (Angular):
+Prerequisites:
+Ensure you have the following installed:
+
+Node.js (which includes npm)
+Angular CLI (Command Line Interface)
+npm install -g @angular/cli
+
+Install dependencies:
+npm install
+
+Create a configuration file to set the API URL for communication with the Django backend. Inside the src/environments folder, edit the environment.ts file to point to your backend server.
+export const environment = {
+  production: false,
+  apiUrl: 'http://localhost:8000/api/' // Ensure this matches your Django API URL
+};
+
+Serve the Angular application:
+ng serve
+
